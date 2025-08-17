@@ -1,81 +1,186 @@
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": ["NailSalon","LocalBusiness"],
-  "@id": "https://[twoja-domena.pl]#business",
-  "name": "Julia Królak Beauty Studio",
-  "url": "https://[twoja-domena.pl]",
-  "image": [
-    "https://[twoja-domena.pl]/images/hero.jpg",
-    "https://[twoja-domena.pl]/images/g1.jpg"
-  ],
-  "description": "Stylizacja paznokci, manicure hybrydowy, żel, pedicure oraz PMU w Kaliszkach (Czosnów).",
-  "telephone": "+48 [telefon]",
-  "priceRange": "$$",
-  "email": "[email]",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Akacjowa 79",
-    "addressLocality": "Kaliszki",
-    "postalCode": "05-152",
-    "addressCountry": "PL"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": [52.****],
-    "longitude": [20.****]
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "09:00",
-      "closes": "19:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "09:00",
-      "closes": "15:00"
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Julia Królak Beauty Studio | Paznokcie i PMU — Kaliszki</title>
+  <meta name="description" content="Stylizacja paznokci, manicure hybrydowy, żel, pedicure oraz makijaż permanentny. Kaliszki (Czosnów). Umów wizytę online w Julia Królak Beauty Studio." />
+  <meta name="theme-color" content="#e11d48" />
+  <meta property="og:title" content="Julia Królak Beauty Studio — Kaliszki" />
+  <meta property="og:description" content="Manicure hybrydowy, żel, pedicure i PMU. Zarezerwuj wizytę online." />
+  <meta property="og:type" content="website" />
+  <style>
+    :root{
+      --bg:#fff;
+      --text:#1a1a1a;
+      --muted:#6b7280;
+      --primary:#e11d48;
+      --secondary:#fce7f3;
+      --card:#ffffffcc;
+      --shadow:0 8px 24px rgba(0,0,0,.08);
+      --radius:14px;
+      --max:1120px;
     }
-  ],
-  "sameAs": [
-    "https://www.instagram.com/juliakrolakstudio/",
-    "https://booksy.com/pl-pl/275546_julia-krolak-beauty-studio_paznokcie_4259_czosnow"
-  ],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Usługi",
-    "itemListElement": [
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+    img{max-width:100%;display:block}
+    a{color:var(--primary);text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    .btn{display:inline-block;background:var(--primary);color:#fff;padding:12px 20px;border-radius:999px;font-weight:600;box-shadow:var(--shadow);transition:transform .15s ease,opacity .2s}
+    .btn:hover{transform:translateY(-1px);opacity:.95}
+    .btn.secondary{background:#fff;color:var(--primary);border:2px solid var(--primary)}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(8px);background:rgba(255,255,255,.7);z-index:50;border-bottom:1px solid #f1f5f9}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    nav .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px}
+    nav .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--primary)}
+    nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+    nav li a{color:var(--text);font-weight:600}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:64px 0}
+    .tag{display:inline-flex;align-items:center;gap:8px;background:var(--secondary);color:#9d174d;padding:6px 12px;border-radius:999px;font-weight:600}
+    .hero h1{font-size:44px;line-height:1.15;margin:14px 0 10px}
+    .hero p{color:var(--muted);font-size:18px;margin:0 0 22px}
+    .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .services{padding:40px 0}
+    .grid{display:grid;gap:18px}
+    @media(min-width:900px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+    @media(min-width:700px){.grid.cols-2{grid-template-columns:repeat(2,1fr)}}
+    .service{padding:20px}
+    .service h3{margin:0;font-size:20px}
+    .price{font-weight:800;color:var(--primary)}
+    /* Tabs */
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
+    .tab{padding:8px 14px;border-radius:999px;border:1px solid #f1f5f9;background:#fff;color:#1f2937;font-weight:600;cursor:pointer}
+    .tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+    .tabpanes>.pane{display:none}
+    .tabpanes>.pane.active{display:block}
+    .gallery{padding:40px 0}
+    .gallery .grid img{border-radius:12px;box-shadow:var(--shadow);height:220px;object-fit:cover;width:100%}
+    .testimonials{padding:40px 0}
+    .quote{padding:20px}
+    .quote p{margin:0}
+    .about{padding:40px 0}
+    .about .inner{display:grid;gap:28px}
+    @media(min-width:900px){.about .inner{grid-template-columns:1fr 1.2fr}}
+    .badge{display:inline-block;background:#e5e7eb;color:#334155;padding:6px 10px;border-radius:999px;margin-right:8px;margin-top:6px}
+    .booking{padding:40px 0}
+    .booking .panel{padding:24px;display:grid;gap:16px}
+    .contact{padding:32px 0;border-top:1px solid #f1f5f9}
+    .contact .cols{display:grid;gap:16px}
+    @media(min-width:700px){.contact .cols{grid-template-columns:1fr 1fr 1fr}}
+    .footer{padding:26px 0;color:#6b7280;font-size:14px;border-top:1px solid #f1f5f9}
+    .map{width:100%;height:260px;border:0;border-radius:12px;box-shadow:var(--shadow)}
+    input, textarea, select{width:100%;padding:12px 14px;border:1px solid #e5e7eb;border-radius:10px;font:inherit}
+    label{font-weight:600;font-size:14px}
+    form .row{display:grid;gap:12px}
+    @media(min-width:700px){form .row.cols-2{grid-template-columns:1fr 1fr}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["NailSalon","LocalBusiness"],
+    "@id": "https://[tymczasowa-nazwa].netlify.app#business",
+    "name": "Julia Królak Beauty Studio",
+    "url": "https://[tymczasowa-nazwa].netlify.app",
+    "image": [
+      "https://[tymczasowa-nazwa].netlify.app/images/hero.jpg",
+      "https://[tymczasowa-nazwa].netlify.app/images/g1.jpg"
+    ],
+    "description": "Stylizacja paznokci, manicure hybrydowy, żel, pedicure oraz PMU w Kaliszkach (Czosnów).",
+    "telephone": "+48 509 925 294",
+    "priceRange": "$$",
+    "email": "juliakrolak.studio@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Akacjowa 79",
+      "addressLocality": "Kaliszki",
+      "postalCode": "05-152",
+      "addressCountry": "PL"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 52.35458,
+      "longitude": 20.71462
+    },
+    "openingHoursSpecification": [
       {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Manicure hybrydowy"
-        }
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "09:00",
+        "closes": "19:00"
       },
       {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Przedłużanie żelem"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Pedicure"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Makijaż permanentny (PMU)"
-        }
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "15:00"
       }
-    ]
+    ],
+    "sameAs": [
+      "https://www.instagram.com/juliakrolakstudio/",
+      "https://booksy.com/pl-pl/275546_julia-krolak-beauty-studio_paznokcie_4259_czosnow"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Usługi",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Manicure hybrydowy" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Przedłużanie żelem" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pedicure" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Makijaż permanentny (PMU)" } }
+      ]
+    }
   }
-}
-</script>
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo"><span class="dot"></span> Julia Królak Beauty Studio</div>
+        <ul>
+          <li><a href="#oferta">Oferta</a></li>
+          <li><a href="#galeria">Galeria</a></li>
+          <li><a href="#opinie">Opinie</a></li>
+          <li><a href="#rezerwacja">Rezerwacja</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div>
+        <span class="tag">Stylizacja paznokci i PMU — Kaliszki / Czosnów</span>
+        <h1>Piękne, trwałe paznokcie i naturalne podkreślenie urody</h1>
+        <p>Manicure hybrydowy, żel, pedicure oraz makijaż permanentny w przyjaznym studio w Kaliszkach.</p>
+        <div class="cta">
+          <a class="btn" href="#rezerwacja">Umów wizytę</a>
+          <a class="btn secondary" href="https://www.instagram.com/juliakrolakstudio/" target="_blank" rel="noopener">Zobacz realizacje</a>
+        </div>
+      </div>
+      <div>
+        <img src="images/hero.jpg" alt="Julia Królak Beauty Studio — stylizacja paznokci">
+      </div>
+    </section>
+
+    <!-- OFERTA Z ZAKŁADKAMI -->
+    <section id="oferta" class="services container">
+      <h2>Oferta i cennik — najważniejsze usługi</h2>
+
+      <!-- Zakładki -->
+      <div class="tabs" role="tablist" aria-label="Kategorie usług">
+        <button class="tab active" data-tab="manicure" role="tab" aria-selected="true">Manicure</button>
+        <button class="tab" data-tab="przedluzanie" role="tab" aria-selected="false">Przedłużanie</button>
+        <button class="tab" data-tab="pedicure" role="tab" aria-selected="false">Pedicure</button>
+        <button class="tab" data-tab="pmu" role="tab" aria-selected="false">PMU</button>
+        <button class="tab" data-tab="brwi" role="tab" aria-selected="false">Brwi/Rzęsy</button>
+      </div>
+
+      <!-- Panele -->
+      <div class="tabpanes">
+        <!-- Manicure -->
+        <div class="pane active" id="pane-manicure" data-pane="manicure">
+          <div class="grid cols-3">
+            <div class="card service">
